@@ -2,7 +2,6 @@ import streamlit as st
 import pandas
 
 st.set_page_config(layout="centered", page_title="About Me")
-
 col1, col2 = st.columns(2)
 
 with col1:
@@ -21,15 +20,27 @@ with col2:
     """
     st.info(creator_info_text)
 
-st.write("Some projects I have completed include the following: ")
+st.subheader("Some projects I have completed include the following: ")
 
-col3, col4 = st.columns(2)
+col3, col_space, col4 = st.columns([1.5, 0.5, 1.5])
 df = pandas.read_csv("files/data.csv", sep=";")
 
 with col3:
     for index, row in df[:10].iterrows():
         st.header(row["title"])
+        st.write(row["description"])
+        st.write(f"<a href = {row['url']}><p> Source Code Available Here </p></a>",
+                 unsafe_allow_html=True)
+        image_app_filepath = f"files/images/{row['image']}"
+        st.image(image_app_filepath)
 
 with col4:
     for index, row in df[10:].iterrows():
         st.header(row["title"])
+        st.write(row["description"])
+        st.write(f"<a href = {row['url']}><p> Source Code Available Here </p></a>",
+                 unsafe_allow_html=True)
+        image_app_filepath = f"files/images/{row['image']}"
+        st.image(image_app_filepath)
+
+st.write("</span>",unsafe_allow_html=True)
