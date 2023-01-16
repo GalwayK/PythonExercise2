@@ -9,7 +9,6 @@ CONTEXT = ssl.create_default_context()
 
 
 def send_email(message, subject, username):
-    print(os.environ)
     message = f"""\
 Subject: {subject} 
 

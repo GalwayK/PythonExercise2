@@ -19,3 +19,4 @@ with streamlit.form(key="email_form"):
     if submit_button:
         print(f"Email: {user_email}\nMessage: {user_message}")
         send_email.send_email(user_message, user_subject, user_email)
+        streamlit.info("Email successfully sent.")
